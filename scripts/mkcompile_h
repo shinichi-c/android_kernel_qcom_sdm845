@@ -45,7 +45,7 @@ else
 	LINUX_COMPILE_BY='shinichi'
 fi
 if test -z "$KBUILD_BUILD_HOST"; then
-	LINUX_COMPILE_HOST=`kudo'
+	LINUX_COMPILE_HOST='kudo'
 else
 	LINUX_COMPILE_HOST='kudo'
 fi
