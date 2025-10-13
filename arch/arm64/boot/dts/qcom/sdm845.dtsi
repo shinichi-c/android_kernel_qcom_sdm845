@@ -2583,6 +2583,7 @@
 		compatible = "qcom,qseecom";
 		reg = <0x86d00000 0x03E00000>;  /* enlarge TA memory size from 34M to 62M on 2018/09/03 */
 		reg-names = "secapp-region";
+		memory-region = <&qseecom_mem>;
 		qcom,hlos-num-ce-hw-instances = <1>;
 		qcom,hlos-ce-hw-instance = <0>;
 		qcom,qsee-ce-hw-instance = <0>;
