@@ -432,8 +432,7 @@ static ssize_t zstd_decompress_safe(struct mount_info *mi,
 		return result;
 
 	if (!mi->mi_zstd_stream) {
-		unsigned int workspace_size = ZSTD_DStreamWorkspaceBound(
-						INCFS_DATA_FILE_BLOCK_SIZE);
+		unsigned int workspace_size = ZSTD_DStreamInSize();
 		void *workspace = kvmalloc(workspace_size, GFP_NOFS);
 		ZSTD_DStream *stream;
 
@@ -442,8 +441,7 @@ static ssize_t zstd_decompress_safe(struct mount_info *mi,
 			goto out;
 		}
 
-		stream = ZSTD_initDStream(INCFS_DATA_FILE_BLOCK_SIZE, workspace,
-				  workspace_size);
+		stream = ZSTD_createDStream();
 		if (!stream) {
 			kvfree(workspace);
 			result = -EIO;
